@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnvMovingObstacles : MonoBehaviour
+public class MovingObstacles : MonoBehaviour
 {
     [SerializeField] private GameObject cylPrefab, cubePrefab, spherePrefab;
 
