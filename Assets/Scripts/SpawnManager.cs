@@ -6,17 +6,12 @@ public class SpawnManager : MonoBehaviour
 {
     [SerializeField] Vector3 _spawnPoint = new Vector3();
 
-    public List<GameObject> obstacles = new List<GameObject>();
-
-    [SerializeField] private float _objSpawnInterval = 3.0f;
+    [SerializeField] private float _objSpawnIntervalTime = 3.0f;
     
 
     void Start()
     {
-        //foreach (var item in obstacles)
-        //{
 
-        //}
     }
 
     void Update()
@@ -29,13 +24,7 @@ public class SpawnManager : MonoBehaviour
     {
         while (true) // while player alive
         {
-            foreach (var item in obstacles)
-            {
-                Instantiate(_obstacles[i], _spawnPoint, );
-            }
-            yield return new WaitForSeconds(_objSpawnInterval);
-            
+            yield return new WaitForSeconds(_objSpawnIntervalTime);
         }
     }
-  
 }
