@@ -42,8 +42,7 @@ public class MovingEnvObstaclePoolManager: MonoBehaviour
 
     private void Awake()
     {
-        // initialize singleton
-        // assign instance to this class/object
+        // initialize singleton while scene loads
         _instance = this;
     }
 
