@@ -8,7 +8,12 @@ public class PlayerController : MonoBehaviour
     private bool isRolling = false;
     private float scale;
     private float inputThreshold = 0.05f;
+    private bool isGrounded;
+    private Vector3 gravity = new Vector3(0, -100, 0);
     [SerializeField] private float duration = 1f;
+    [SerializeField] private float jumpHeight = 7f;
+    [SerializeField] private int gravityMultiply = 500;
+
 
     //Cached variable to RollingCube coroutine
     private float angle;
@@ -29,19 +34,33 @@ public class PlayerController : MonoBehaviour
         movePivotPoint = new Vector3(0, -scale, 0);
     }
 
+    private void FixedUpdate()
+    {
+        if (!isGrounded)
+        {
+            rb.AddForce(gravity * gravityMultiply * Time.deltaTime, ForceMode.Acceleration);
+        }
+    }
     // Update is called once per frame
     void Update()
     {
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
 
-        if(!isRolling && (Mathf.Abs(x) > inputThreshold || Mathf.Abs(y) > inputThreshold))
+        if(!isRolling && (Mathf.Abs(x) > inputThreshold || Mathf.Abs(y) > inputThreshold) && isGrounded)
         {
             isRolling = true;
             StartCoroutine(RollingCube(x, y));
         }
-    }
 
+        if (isGrounded && !isRolling)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                rb.AddForce(Vector3.up * jumpHeight, ForceMode.Impulse);
+            }
+        }
+    }
 
     IEnumerator RollingCube(float x, float y)
     {
@@ -97,4 +116,21 @@ public class PlayerController : MonoBehaviour
 
         isRolling = false;
     }
+
+    void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.tag == "Ground")
+        {
+            isGrounded = true;
+        }
+    }
+
+    void OnCollisionExit(Collision other)
+    {
+        if (other.gameObject.tag == "Ground")
+        {
+            isGrounded = false;
+        }
+    }
+
 }
