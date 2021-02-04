@@ -9,11 +9,6 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private float _objSpawnIntervalTime = 3.0f;
     
 
-    void Start()
-    {
-
-    }
-
     void Update()
     {
         StartCoroutine(ObstacleSpawnRoutine());
@@ -24,6 +19,12 @@ public class SpawnManager : MonoBehaviour
     {
         while (true) // while player alive
         {
+            // access pool manager through singleton instance to get obstacle
+            GameObject obstacle = MovingEnvObstaclePoolManager.Instance.RequestObstacle();
+
+            // request obstacle
+            obstacle.transform.position = _spawnPoint;
+
             yield return new WaitForSeconds(_objSpawnIntervalTime);
         }
     }

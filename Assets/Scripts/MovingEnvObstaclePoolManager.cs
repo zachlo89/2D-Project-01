@@ -73,4 +73,38 @@ public class MovingEnvObstaclePoolManager: MonoBehaviour
         // return obstacle pool
         return _movingEnvObstaclePool;
     }
+
+
+    public GameObject RequestObstacle() 
+    {
+        // make obstacle active
+        // reassign based on where spawn manager needs it
+        // loop through obstacle list
+        // chk for inactive obstacle
+
+        foreach (var obstacle in _movingEnvObstaclePool)
+        {
+            if (obstacle.activeInHierarchy == false)
+            {
+                // obstacle is available
+                // make sure obstacle is active
+                // return to user
+                obstacle.SetActive(true);
+                return obstacle;
+            }
+        }
+
+        // if made it here need generate more obstacles
+        // found obstacle? set it active and return it to the spawn manager
+        // if no obstacles available i.e. all turned on
+        // nn generate more obstacles and run RequestObstacle method
+        // when go beyond num of obstacles created we will continue using pool
+
+        GameObject newObstacle = Instantiate(_cubePrefab);
+        newObstacle.transform.parent = _obstacleContainer.transform; // go's parent
+        _movingEnvObstaclePool.Add(newObstacle);
+
+        // return new obstacle to spawn manager
+        return newObstacle;
+    }
 }
