@@ -17,15 +17,17 @@ public class SpawnManager : MonoBehaviour
     // spawn obstacles every 3 seconds
     IEnumerator ObstacleSpawnRoutine()
     {
-        while (true) // while player alive
+        while (true) // while player alive etc
         {
             // access pool manager through singleton instance to get obstacle
             GameObject obstacle = MovingEnvObstaclePoolManager.Instance.RequestObstacle();
 
-            // request obstacle
+            // request obstacle/more obstacles
             obstacle.transform.position = _spawnPoint;
 
             yield return new WaitForSeconds(_objSpawnIntervalTime);
         }
+
+        // never get here constant while loop
     }
 }

@@ -13,6 +13,8 @@ public class MovingEnvObstaclePoolManager: MonoBehaviour
 
 
     // Access above private ref through public property which returns instance
+    // allows other classes to comm w/ this class
+    // property Instance; when get MovEnvObstacleMan we get it, but not set
     public static MovingEnvObstaclePoolManager Instance
     {
         // get instance
@@ -23,6 +25,8 @@ public class MovingEnvObstaclePoolManager: MonoBehaviour
             {
                 Debug.LogError("The Moving Env Obstacle Pool Manager is NULL");
             }
+
+            // if not null
             return _instance;
         }
     }
@@ -38,6 +42,7 @@ public class MovingEnvObstaclePoolManager: MonoBehaviour
 
     private void Awake()
     {
+        // initialize singleton
         // assign instance to this class/object
         _instance = this;
     }
@@ -47,7 +52,7 @@ public class MovingEnvObstaclePoolManager: MonoBehaviour
     {
         // populate obstacle pool; how many want to create in pool
         // this will return a list
-        _movingEnvObstaclePool = GenerateMovingObstacles(8);
+        _movingEnvObstaclePool = GenerateMovingObstacles(5);
     }
 
 
@@ -63,8 +68,9 @@ public class MovingEnvObstaclePoolManager: MonoBehaviour
             // put the generated obstacles into the obstacle container
             obstacle.transform.parent = _obstacleContainer.transform;
 
-            // turn off visibility of obstacles
-            obstacle.SetActive(false);
+            // turn on/off visibility of obstacles
+            //obstacle.SetActive(false);
+            obstacle.SetActive(true);
 
             // add obstacles to obstacle pool
             _movingEnvObstaclePool.Add(obstacle);
@@ -75,7 +81,8 @@ public class MovingEnvObstaclePoolManager: MonoBehaviour
     }
 
 
-    public GameObject RequestObstacle() 
+    // ignore below to hold limit to 8 objects in pool
+    public GameObject RequestObstacle() // if list is full create obj dynamically
     {
         // make obstacle active
         // reassign based on where spawn manager needs it
@@ -99,12 +106,13 @@ public class MovingEnvObstaclePoolManager: MonoBehaviour
         // if no obstacles available i.e. all turned on
         // nn generate more obstacles and run RequestObstacle method
         // when go beyond num of obstacles created we will continue using pool
-
         GameObject newObstacle = Instantiate(_cubePrefab);
         newObstacle.transform.parent = _obstacleContainer.transform; // go's parent
         _movingEnvObstaclePool.Add(newObstacle);
 
         // return new obstacle to spawn manager
         return newObstacle;
+
+        //return null;
     }
 }
