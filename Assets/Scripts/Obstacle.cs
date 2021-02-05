@@ -4,16 +4,33 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
+    [SerializeField] private int _speed;
+
+
+    void Update()
+    {
+        // move minus on x
+        // respawn at spawn point once goes off screen
+        transform.Translate(Vector3.left * _speed * Time.deltaTime);
+    }
+
+    // similar to Start()
+    // hide new obstacles after a few seconds
+    // so will see obstacles move then disappear down the path
+    // auto called each time go active is true
     void OnEnable()
     {
-        Invoke("Hide", 1);
+        Invoke("Hide", 3.0f);
     }
+
 
     void Hide()
     {
-        //Debug.Log("Hiding GameObject");
+        Debug.Log("Hiding GameObject");
 
-        // recycle gameobject
+        // recycle gameObject
+        // this will create the loop effect to cycle through limited
+        // num of ostacles
         this.gameObject.SetActive(false);
     }
 }

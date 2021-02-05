@@ -6,7 +6,9 @@ public class SpawnManager : MonoBehaviour
 {
     [SerializeField] Vector3 _spawnPoint = new Vector3();
 
-    [SerializeField] private float _objSpawnIntervalTime = 3.0f;
+    [SerializeField] private int _objSpawnIntervalTime;
+
+    private bool _playerAlive = true;
     
 
     void Update()
@@ -17,17 +19,22 @@ public class SpawnManager : MonoBehaviour
     // spawn obstacles every 3 seconds
     IEnumerator ObstacleSpawnRoutine()
     {
-        while (true) // while player alive etc
+        while (_playerAlive == true) // while player alive etc
         {
-            // access pool manager through singleton instance to get obstacle
+            // comm with pool manager through singleton instance to get obstacle
+            // create a ref to allow for flexibility like reposition, scale etc.
+            // this grabs bullet from pool
             GameObject obstacle = MovingEnvObstaclePoolManager.Instance.RequestObstacle();
 
             // request obstacle/more obstacles
             obstacle.transform.position = _spawnPoint;
 
             yield return new WaitForSeconds(_objSpawnIntervalTime);
+
+            _playerAlive = false;
         }
 
         // never get here constant while loop
     }
+
 }
