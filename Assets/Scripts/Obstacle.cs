@@ -11,8 +11,9 @@ public class Obstacle : MonoBehaviour
     {
         // move minus on x
         // respawn at spawn point once goes off screen
-        transform.Translate(Vector3.left * _speed * Time.deltaTime);
+        //transform.Translate(Vector3.left * _speed * Time.deltaTime);
     }
+
 
     // similar to Start()
     // hide new obstacles after a few seconds
@@ -20,13 +21,15 @@ public class Obstacle : MonoBehaviour
     // auto called each time go active is true
     void OnEnable()
     {
+        transform.Translate(Vector3.left * _speed * Time.deltaTime);
+
         Invoke("Hide", 3.0f);
     }
 
 
     void Hide()
     {
-        Debug.Log("Hiding GameObject");
+        Debug.Log("Hiding GameObject WORKS!");
 
         // recycle gameObject
         // this will create the loop effect to cycle through limited

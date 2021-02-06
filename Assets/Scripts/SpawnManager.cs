@@ -16,6 +16,7 @@ public class SpawnManager : MonoBehaviour
         StartCoroutine(ObstacleSpawnRoutine());
     }
 
+
     // spawn obstacles every 3 seconds
     IEnumerator ObstacleSpawnRoutine()
     {
@@ -23,7 +24,7 @@ public class SpawnManager : MonoBehaviour
         {
             // comm with pool manager through singleton instance to get obstacle
             // create a ref to allow for flexibility like reposition, scale etc.
-            // this grabs bullet from pool
+            // this grabs obstacle from pool
             GameObject obstacle = MovingEnvObstaclePoolManager.Instance.RequestObstacle();
 
             // request obstacle/more obstacles
@@ -33,8 +34,5 @@ public class SpawnManager : MonoBehaviour
 
             _playerAlive = false;
         }
-
-        // never get here constant while loop
     }
-
 }

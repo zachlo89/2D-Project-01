@@ -15,7 +15,7 @@ public class MovingEnvObstaclePoolManager: MonoBehaviour
     // Access above private ref through public property which returns instance
     // allows other classes to comm w/ this class
     // property Instance; when get MovEnvObstacleMan we get it, but not set
-    public static MovingEnvObstaclePoolManager Instance
+    public static MovingEnvObstaclePoolManager Instance //property
     {
         // get instance
         get
@@ -72,8 +72,8 @@ public class MovingEnvObstaclePoolManager: MonoBehaviour
 
             obstacle.transform.parent = _obstacleContainer.transform;
 
-            // turn on/off visibility of obstacles
-            obstacle.SetActive(true);
+            // turn off visibility of obstacles
+            obstacle.SetActive(false);
 
             // add obstacles to obstacle pool List
             _movingEnvObstaclePool.Add(obstacle);
@@ -96,18 +96,20 @@ public class MovingEnvObstaclePoolManager: MonoBehaviour
 
         foreach (var obstacle in _movingEnvObstaclePool)
         {
-            if (obstacle.activeInHierarchy == false)
+            if (obstacle.activeInHierarchy == false) // is obstacle active in scene?
             {
                 // obstacle is available? 
                 // if yes then status of it in-active is false
                 // make sure obstacle is active
                 // return/give obstacle to spawnManager
                 obstacle.SetActive(true);
+
+                // as soon as it's active then return/give to spawn point
                 return obstacle;
             }
         }
 
-        // if made it here need generate more obstacles
+        // if made it here need generate more obstacles; just add more dynamically
         // found obstacle? set it active and return it to the spawn manager
         // if no obstacles available i.e. all turned on
         // nn generate more obstacles and run RequestObstacle method so there are obstacles constantly spawned
