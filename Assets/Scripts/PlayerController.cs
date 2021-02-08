@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     private bool isRolling = false;
     private float scale;
     private float inputThreshold = 0.05f;
-    private bool isGrounded;
+    private bool isGrounded = true;
     private Vector3 gravity = new Vector3(0, -100, 0);
     [SerializeField] private float duration = 1f;
     [SerializeField] private float jumpHeight = 7f;
@@ -133,4 +133,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            Debug.Log("YOU DIED");
+        }
+    }
 }

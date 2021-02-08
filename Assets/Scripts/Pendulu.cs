@@ -42,4 +42,9 @@ public class Pendulu : MonoBehaviour
     {
         startTime = 0f;
     }
+
+    public void SetStartingTime(float time)
+    {
+        startTime = time;
+    }
 }

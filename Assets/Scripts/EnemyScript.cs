@@ -2,18 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum moveDirection
+{
+    left,
+    right,
+    back,
+    forward
+}
 public class EnemyScript : MonoBehaviour
 {
+    private Vector3 defaultPosition;
     private float speed;
     private Vector3 direction;
     [SerializeField] private float minSpeed, maxSpeed;
     [SerializeField] private float maxLeftDistance, maxRightDistance;
     [SerializeField] private moveDirection moveDir = moveDirection.left;
 
-    public enum moveDirection
+    private void Start()
     {
-        left,
-        right
+        defaultPosition = new Vector3(0, 0, 0);
     }
 
     //Designate random speed and decide about direction
@@ -21,16 +28,29 @@ public class EnemyScript : MonoBehaviour
     private void OnEnable()
     {
         speed = Random.Range(minSpeed, maxSpeed);
-        if (moveDir == moveDirection.left)
+        switch (moveDir)
         {
-            direction = Vector3.left;
+            case moveDirection.back:
+                direction = Vector3.back;
+                break;
+            case moveDirection.forward:
+                direction = Vector3.forward;
+                break;
+            case moveDirection.right:
+                direction = Vector3.right;
+                break;
+            case moveDirection.left:
+                direction = Vector3.left;
+                break;
+            default:
+                direction = Vector3.left;
+                break;
         }
-        else direction = Vector3.right;
     }
     // Opposite of onEnable method, reset everything to default
     private void OnDisable()
     {
-        moveDir = moveDirection.left;
+       moveDir = moveDirection.left;
     }
 
     private void FixedUpdate()
@@ -39,6 +59,7 @@ public class EnemyScript : MonoBehaviour
         transform.Translate(direction * speed * Time.deltaTime);
         if(transform.position.x < maxLeftDistance || transform.position.x > maxRightDistance)
         {
+            transform.position = defaultPosition;
             gameObject.SetActive(false);
         }
     }
@@ -48,4 +69,6 @@ public class EnemyScript : MonoBehaviour
     {
         moveDir = dir;
     }
+
+
 }
