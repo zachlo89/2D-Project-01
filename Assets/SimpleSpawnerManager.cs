@@ -5,26 +5,28 @@ using UnityEngine;
 public class SimpleSpawnerManager : MonoBehaviour
 {
     [SerializeField] private SimpleObjectPool pool;
+    private Vector3 baseOffset = new Vector3(0, 0, 30);
     private Vector3 offset = new Vector3(0, 0, 30);
     public int howManyPendulums;
 
 
     private void Start()
     {
-        InvokeRepeating("SpawnEnemy", 1, 1);
+
+        InvokeRepeating("SpawnEnemy", .5f, .4f);
         SpawnPendulums(howManyPendulums);
     }
 
     private void SpawnEnemy()
     {
         GameObject temp = pool.ReturnObject();
-        temp.transform.position = transform.position;
+        temp.transform.position = transform.position + (offset);
         temp.GetComponent<EnemyScript>().ChangeDirection(moveDirection.left);
         temp.SetActive(true);
-        transform.position += offset;
-        if(transform.position.z > 200)
+        offset += baseOffset;
+        if(offset.z > 300)
         {
-            transform.position -= offset * 12;
+            offset.z = 0;
         }
     }
 

@@ -15,7 +15,7 @@ public class EnemyScript : MonoBehaviour
     private float speed;
     private Vector3 direction;
     [SerializeField] private float minSpeed, maxSpeed;
-    [SerializeField] private float maxLeftDistance, maxRightDistance;
+    [SerializeField] private float maxtDistance;
     [SerializeField] private moveDirection moveDir = moveDirection.left;
 
     private void Start()
@@ -57,7 +57,7 @@ public class EnemyScript : MonoBehaviour
     {
         //Very simple script to move object nicely, can introduce some rotation later on when we'll have some asstes, now can't see any difference
         transform.Translate(direction * speed * Time.deltaTime);
-        if(transform.position.x < maxLeftDistance || transform.position.x > maxRightDistance)
+        if(transform.position.x < -maxtDistance || transform.position.x > maxtDistance)
         {
             transform.position = defaultPosition;
             gameObject.SetActive(false);
