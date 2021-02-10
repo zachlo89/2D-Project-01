@@ -12,7 +12,6 @@ public class SimpleSpawnerManager : MonoBehaviour
 
     private void Start()
     {
-
         InvokeRepeating("SpawnEnemy", .5f, .4f);
         SpawnPendulums(howManyPendulums);
     }
