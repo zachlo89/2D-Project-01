@@ -605,6 +605,7 @@ MonoBehaviour:
   pendulum: {fileID: 6360750653804724514, guid: 363a7ca846eaa6c499726baa0e0be09d,
     type: 3}
   _enemyPoolContainer: {fileID: 777131227}
+  _pooledAmount: 10
 --- !u!4 &1566528946
 Transform:
   m_ObjectHideFlags: 0
