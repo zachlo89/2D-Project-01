@@ -1,0 +1,55 @@
+Thanks a lot for having dowloaded this pack.
+
+Demo Scenes :
+2 Scenes are available, you have to go to the demo scene file and you will be able to 
+open the scene you want.
+
+Of course you can also customized the scenes by adding whatever you like.
+
+
+Prefabs :
+The prefabs are available in the prefab file, you just have to drag and drop them into the scene.
+
+FX :
+The fx are available in the fx file, prefabs are ready to be dragged and dropped.
+To change the parameters of the fx you have to click on your prefab and change what you like in the inspector.
+
+
+
+Graphics
+
+
+Project quality :
+
+Go to "edit" , "Project Settings " , " Quality" , you then have the choice to change the quality to "ultra quality" so it will make your graphics smoother. 
+
+Post Processing :
+In order to use the post processing settings , you need to install the post processing stack thanks to the package 
+manager.You will find it in "Window" then Package manager, go to "advanced", "show preview package ", and then search for Post processing.
+You will then be able to install it.
+
+You will be able to add post processing by selecting the main camera. Once selected go te the inspector and click on
+ add new component and search for  Post processing layer, add it and then add post processing volume.
+
+Post processing Layer
+Set trigger to main camera, "layer" select post processing and the anti aliasing mode used was subpixel.
+
+
+Post Processing Volume
+Tick "is global" and check that weight is at 1.
+Then you will just need to drag and drop the post processing profile available in the post processing demo scene folder.
+Choose the one according to the right scene. (there are 2 scenes so 2 profiles )
+
+
+HDRP :
+If you want the same rendering as the screenshots from the assetstore you will have to switch the project to HDRP.
+In order to do that you will have to go to the Package manager again and download the HDRP pipeline asset, then switch the hole project to HDRP.
+Check this quick tutorial to do it : https://www.youtube.com/watch?v=orzuSWtaOVM&t=424s
+
+Once it's in HDRP you can adjust the rendering thanks to the different settings.
+
+
+
+For any queries please send an e-mail : newvision.istudios@gmail.com
+
+
