@@ -717,7 +717,7 @@ Transform:
   m_GameObject: {fileID: 1198659859}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.4014, y: 4.51, z: -0.828557}
-  m_LocalScale: {x: 2.5943, y: 2.5943, z: 2.5943}
+  m_LocalScale: {x: 17.607515, y: 17.607515, z: 17.607515}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 16
@@ -1323,9 +1323,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91671f80fe1552d4f9c59d4608b32654, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  isRolling: 0
+  scale: 0
+  inputThreshold: 0.05
+  isGrounded: 1
+  gravity: {x: 0, y: -100, z: 0}
   duration: 0.3
   jumpHeight: 7000
   gravityMultiply: 500
+  angle: 0
+  elsapsed: 0
+  point: {x: 0, y: 0, z: 0}
+  axis: {x: 0, y: 0, z: 0}
+  direction: {x: 0, y: 0, z: 0}
+  magnitudeScale: {x: 0, y: 0, z: 0}
+  movePivotPoint: {x: 0, y: 0, z: 0}
+  adjustPos: {x: 0, y: 0, z: 0}
+  adjustRotaition: {x: 0, y: 0, z: 0, w: 0}
 --- !u!54 &516525436716730539
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1354,10 +1369,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8eef701cbac24624794e590c414a9550, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 0}
   isGrounded: 1
+  gravity: {x: 0, y: -100, z: 0}
+  horizontalMovements: {x: 100, y: 0, z: 0}
+  verticalMovements: {x: 0, y: 0, z: 100}
+  direction: {x: 0, y: 0, z: 0}
   speed: 500
   jumpHeight: 2000
   gravityMultiply: 500
+  x: 0
+  y: 0
 --- !u!114 &516525436716730541
 MonoBehaviour:
   m_ObjectHideFlags: 0

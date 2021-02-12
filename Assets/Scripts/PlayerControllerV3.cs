@@ -19,6 +19,9 @@ public class PlayerControllerV3 : MonoBehaviour
     private float y;
 
     private Animator animator;
+
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
