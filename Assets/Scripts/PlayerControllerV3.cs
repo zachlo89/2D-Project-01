@@ -18,9 +18,12 @@ public class PlayerControllerV3 : MonoBehaviour
     private float x;
     private float y;
 
+    private Animator animator;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -40,6 +43,8 @@ public class PlayerControllerV3 : MonoBehaviour
     private void FixedUpdate()
     {
         direction = (horizontalMovements * x) + (verticalMovements * y);
+        animator.SetFloat("runningVertically", y);
+        animator.SetFloat("runningHorizontaly", x);
         transform.Translate(direction * speed * Time.deltaTime);
         if (!isGrounded)
         {
@@ -53,6 +58,7 @@ public class PlayerControllerV3 : MonoBehaviour
         if (other.gameObject.tag == "Ground")
         {
             isGrounded = true;
+            animator.SetBool("isGrounded", isGrounded);
         }
     }
 
@@ -61,6 +67,7 @@ public class PlayerControllerV3 : MonoBehaviour
         if (other.gameObject.tag == "Ground")
         {
             isGrounded = false;
+            animator.SetBool("isGrounded", isGrounded);
         }
     }
 
