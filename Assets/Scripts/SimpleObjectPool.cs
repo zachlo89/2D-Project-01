@@ -5,11 +5,11 @@ using UnityEngine;
 public class SimpleObjectPool : MonoBehaviour
 {
     //public static SimpleObjectPool current;
-    [SerializeField] private GameObject enemyPrototype;
-    [SerializeField] private GameObject pendulum;
+    [SerializeField] private GameObject _enemyPrototype;
+    [SerializeField] private GameObject _pendulum;
     [SerializeField] private GameObject _enemyPoolContainer;
     [SerializeField] private int _pooledAmount = 10;
-    private List<GameObject> enemyPool = new List<GameObject>();
+    private List<GameObject> _enemyPool = new List<GameObject>();
 
 
     //private void Awake()
@@ -19,13 +19,13 @@ public class SimpleObjectPool : MonoBehaviour
 
     private void Start()
     {
-        for(int i = 0; i < _pooledAmount; i++)
+        for (int i = 0; i < _pooledAmount; i++)
         {
-            GameObject obj = Instantiate(enemyPrototype);
+            GameObject obj = Instantiate(_enemyPrototype);
             // placing enemy prototypes in a container to keep it tidy
             obj.transform.parent = _enemyPoolContainer.transform;
             obj.SetActive(false);
-            enemyPool.Add(obj);
+            _enemyPool.Add(obj);
         }
     }
 
@@ -34,11 +34,11 @@ public class SimpleObjectPool : MonoBehaviour
         // Get in active game object from pool
         GameObject obj = null;
 
-        for (int i = 0; i < enemyPool.Count; i++)
+        for (int i = 0; i < _enemyPool.Count; i++)
         {
-            if (!enemyPool[i].activeInHierarchy)
+            if (!_enemyPool[i].activeInHierarchy)
             {
-                obj = enemyPool[i];
+                obj = _enemyPool[i];
                 break;
             }
         }
@@ -46,15 +46,15 @@ public class SimpleObjectPool : MonoBehaviour
         //If every possible object in pool is active create new object
         if (obj == null)
         {
-            obj = Instantiate(enemyPrototype);
+            obj = Instantiate(_enemyPrototype);
             obj.SetActive(false);
-            enemyPool.Add(obj);
+            _enemyPool.Add(obj);
         }
         return obj;
     }
 
     public GameObject ReturnPendulum()
     {
-        return pendulum;
+        return _pendulum;
     }
 }

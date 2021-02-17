@@ -9,6 +9,7 @@ public enum moveDirection
     back,
     forward
 }
+
 public class EnemyScript : MonoBehaviour
 {
     private Vector3 defaultPosition;
@@ -57,7 +58,7 @@ public class EnemyScript : MonoBehaviour
     {
         //Very simple script to move object nicely, can introduce some rotation later on when we'll have some asstes, now can't see any difference
         transform.Translate(direction * speed * Time.deltaTime);
-        if(transform.position.x < -maxtDistance || transform.position.x > maxtDistance)
+        if (transform.position.x < -maxtDistance || transform.position.x > maxtDistance)
         {
             transform.position = defaultPosition;
             gameObject.SetActive(false);
