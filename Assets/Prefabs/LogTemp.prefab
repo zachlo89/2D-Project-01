@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2625334029274734771}
   - component: {fileID: -648322221877700123}
   m_Layer: 0
-  m_Name: Log
+  m_Name: LogTemp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,8 +28,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2625334029274734768}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 122.4, y: 0.8, z: -253.4}
-  m_LocalScale: {x: 11.1376505, y: 2.390154, z: 4.2343965}
+  m_LocalPosition: {x: 0, y: 0.8, z: 0}
+  m_LocalScale: {x: 4.515558, y: 0.56064, z: 1.3773}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aafef4e60c322245917925a6396a4de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minSpeed: 100
-  maxSpeed: 200
-  maxtDistance: 100
+  minSpeed: 2
+  maxSpeed: 5
+  maxtDistance: 25
   moveDir: 0

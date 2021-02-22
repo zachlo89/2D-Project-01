@@ -6,7 +6,7 @@ public class SimpleObjectPool : MonoBehaviour
 {
     //public static SimpleObjectPool current;
     [SerializeField] private GameObject _enemyPrototype;
-    [SerializeField] private GameObject _pendulum;
+    //[SerializeField] private GameObject _pendulum;
     [SerializeField] private GameObject _enemyPoolContainer;
     [SerializeField] private int _pooledAmount = 10;
     private List<GameObject> _enemyPool = new List<GameObject>();
@@ -53,8 +53,8 @@ public class SimpleObjectPool : MonoBehaviour
         return obj;
     }
 
-    public GameObject ReturnPendulum()
-    {
-        return _pendulum;
-    }
+    //public GameObject ReturnPendulum()
+    //{
+    //    return _pendulum;
+    //}
 }
