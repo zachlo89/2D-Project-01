@@ -13,7 +13,6 @@ public class SimpleSpawnerManager : MonoBehaviour
     private Vector3 _offsetPos3 = new Vector3(15, 0.25f, 2);
 
     //public int howManyPendulums;
-    //private GameObject _spawnPoint;
 
 
     private void Start()
