@@ -21,23 +21,40 @@ public class PlayerControllerJungle : MonoBehaviour
     void Start()
     {
         _charController = GetComponent<CharacterController>();
-
         if (_charController == null)
         {
             Debug.LogError("Char Controller is NULL");
         }
+
+        //_playerJungle = GetComponent<PlayerControllerJungle>();
+        //if (_playerJungle == null)
+        //{
+        //    Debug.LogError("Player Jungle is NULL");
+        //}
+
+        //_mainCam = GetComponent<Camera>();
+        //if (_mainCam == null)
+        //{
+        //    Debug.LogError("Main Cam is NULL");
+        //}
     }
 
 
     void Update()
     {
-        CalcCharacterMovement();
-
         // x mouse
         //mouseX = Input.GetAxisRaw("Mouse X");
         float mouseX = Input.GetAxisRaw("Mouse X");
         // y mouse
         float mouseY = Input.GetAxisRaw("Mouse Y");
+
+        // mouseX is player rot; nn apply to Y axis looking L+R
+        transform.localEulerAngles = new Vector3(transform.eulerAngles.x, transform.localEulerAngles.y + mouseX, transform.localEulerAngles.z);
+
+        // mouseY is cam vert; nn apply to X axis Up + Down; nn clamp so no over rot 12 and -5
+
+
+        CalcCharacterMovement();
     }
 
     void CalcCharacterMovement()
