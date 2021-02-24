@@ -43,7 +43,7 @@ public class PlayerControllerJungle : MonoBehaviour
     }
 
 
-    void Update()
+    void FixedUpdate()
     {
         CalcCharacterMovement();
         CalcCamMovement();

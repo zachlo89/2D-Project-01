@@ -30,7 +30,7 @@ public class EnemyAIControllerJungle : MonoBehaviour
         _player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         // chk if grounded
         // if yes then move
@@ -56,6 +56,7 @@ public class EnemyAIControllerJungle : MonoBehaviour
 
         _velocity.y -= _gravity * Time.deltaTime;
 
+        // move entire length of direction
         _charController.Move(_velocity * Time.deltaTime);
     }
 }
