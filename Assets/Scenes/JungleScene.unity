@@ -9459,6 +9459,7 @@ MonoBehaviour:
   _jumpHeight: 7
   _gravity: 25
   _speed: 5
+  _camSensitivity: 1.5
 --- !u!1001 &2090542420
 PrefabInstance:
   m_ObjectHideFlags: 0
