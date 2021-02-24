@@ -70,12 +70,12 @@ public class PlayerControllerJungle : MonoBehaviour
             }
         }
 
-        // this always called; gravity always working
-        _velocity.y -= _gravity * Time.deltaTime;
-
         // tk velocity from localspc to worldspc
         // allows to travel or move in dir facing with cam
         _velocity = transform.TransformDirection(_velocity);
+
+        // this always called; gravity always working
+        _velocity.y -= _gravity * Time.deltaTime;
 
         // Move controller - dir of input
         _charController.Move(_velocity * Time.deltaTime);
