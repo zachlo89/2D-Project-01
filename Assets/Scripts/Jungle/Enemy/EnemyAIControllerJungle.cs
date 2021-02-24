@@ -43,7 +43,7 @@ public class EnemyAIControllerJungle : MonoBehaviour
         if (_charController.isGrounded == true)
         {
             Vector3 direction = _player.transform.position - transform.position;
-            // makes vector magnitude 1 normalize vector
+            // makes vector magnitude 1 normalize vector of direction len of 1
             direction.Normalize();
             // if grounded dir.y is 0; fix funky rotation
             direction.y = 0;

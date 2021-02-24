@@ -21775,16 +21775,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -7185656138456590428, guid: 2adcad097aa4d7541a9283f6504f0380,
-        type: 3}
-      propertyPath: _gravity
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: -7185656138456590428, guid: 2adcad097aa4d7541a9283f6504f0380,
-        type: 3}
-      propertyPath: _speed
-      value: 1.25
-      objectReference: {fileID: 0}
     - target: {fileID: 5705829379264033804, guid: 2adcad097aa4d7541a9283f6504f0380,
         type: 3}
       propertyPath: m_LocalPosition.x

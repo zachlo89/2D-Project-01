@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5705829379264033806}
   - component: {fileID: 1059141536}
   - component: {fileID: -7185656138456590428}
+  - component: {fileID: 2269319856478920735}
   m_Layer: 0
   m_Name: EnemyJungle
   m_TagString: Enemy
@@ -111,5 +112,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce804055c9c5cc641b898b48883f00ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 2
-  _gravity: 0
+  _speed: 1.25
+  _gravity: 25
+--- !u!65 &2269319856478920735
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5705829379264033805}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
