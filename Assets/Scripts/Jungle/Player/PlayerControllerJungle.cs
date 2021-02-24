@@ -11,6 +11,9 @@ public class PlayerControllerJungle : MonoBehaviour
     private Vector3 _direction;
     private Vector3 _velocity;
 
+    private float _minClampVal = 0.0f;
+    private float _maxClampVal = 35.0f;
+
     [Header("Controller Settings")]
     [SerializeField] private float _jumpHeight;
     [SerializeField] private float _gravity;
@@ -103,9 +106,21 @@ public class PlayerControllerJungle : MonoBehaviour
          * locking gimble fix
         */
         Vector3 currentCamRotation = _cam.transform.localEulerAngles;
-        currentCamRotation.x -= mouseY;
+        currentCamRotation.x -= mouseY * _camSensitivity;
+        currentCamRotation.x = Mathf.Clamp(currentCamRotation.x, _minClampVal, _maxClampVal);
         // specify angle to chng by degrees pass into angleaxis; rot around axis
         _cam.transform.localEulerAngles = currentCamRotation;
         _cam.transform.localRotation = Quaternion.AngleAxis(currentCamRotation.x, Vector3.right);
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        
+    }
+
 }
