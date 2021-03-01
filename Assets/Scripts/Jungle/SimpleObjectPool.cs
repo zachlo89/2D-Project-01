@@ -8,7 +8,7 @@ public class SimpleObjectPool : MonoBehaviour
     [SerializeField] private GameObject _enemyPrototype;
     //[SerializeField] private GameObject _pendulum;
     [SerializeField] private GameObject _enemyPoolContainer;
-    [SerializeField] private int _pooledAmount = 10;
+    [SerializeField] private int _pooledAmount = 20;
     private List<GameObject> _enemyPool = new List<GameObject>();
 
 

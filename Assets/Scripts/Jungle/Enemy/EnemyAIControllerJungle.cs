@@ -42,6 +42,8 @@ public class EnemyAIControllerJungle : MonoBehaviour
 
         if (_charController.isGrounded == true)
         {
+            StartCoroutine(EnemyAttackRoutine());
+
             Vector3 direction = _player.transform.position - transform.position;
             // makes vector magnitude 1 normalize vector of direction len of 1
             direction.Normalize();
@@ -58,5 +60,14 @@ public class EnemyAIControllerJungle : MonoBehaviour
 
         // move entire length of direction
         _charController.Move(_velocity * Time.deltaTime);
+    }
+
+    IEnumerator EnemyAttackRoutine()
+    {
+        while (_charController.isGrounded)
+        {
+            yield return new WaitForSeconds(2);
+        }
+        
     }
 }

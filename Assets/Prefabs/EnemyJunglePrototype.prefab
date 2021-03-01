@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -7185656138456590428}
   - component: {fileID: 2269319856478920735}
   m_Layer: 0
-  m_Name: EnemyJungle
+  m_Name: EnemyJunglePrototype
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

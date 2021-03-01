@@ -8,7 +8,7 @@ public class SimpleSpawnerManager : MonoBehaviour
     //[SerializeField] private EnemyScript _enemyScript;
 
     private Vector3 _baseOffset = new Vector3(0, 0, 2); // default distance between obj spawned
-    private Vector3 _offsetPos1 = new Vector3(15, 0.25f, 5); // prefab obj spawn pos aka logs
+    private Vector3 _offsetPos1 = new Vector3(15, 0.25f, 0); // prefab obj spawn pos aka logs
     private Vector3 _offsetPos2 = new Vector3(15, 0.25f, 3);
     private Vector3 _offsetPos3 = new Vector3(15, 0.25f, 2);
 
@@ -22,9 +22,10 @@ public class SimpleSpawnerManager : MonoBehaviour
         //    _enemyScript = 
         //}
 
-        InvokeRepeating("SpawnEnemyRow1", 0.5f, 0.8f);
-        InvokeRepeating("SpawnEnemyRow2", 0.5f, 0.8f);
-        InvokeRepeating("SpawnEnemyRow3", 0.5f, 0.8f);
+        // river rows
+        InvokeRepeating("SpawnEnemyRow1", 1f, 3f);
+        //InvokeRepeating("SpawnEnemyRow2", 0.5f, 0.8f);
+        //InvokeRepeating("SpawnEnemyRow3", 0.5f, 0.8f);
         //SpawnPendulums(howManyPendulums);
     }
 

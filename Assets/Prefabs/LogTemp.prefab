@@ -107,6 +107,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minSpeed: 2
-  maxSpeed: 5
-  maxtDistance: 25
+  maxSpeed: 3
+  maxtDistance: 20
   moveDir: 0
