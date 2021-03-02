@@ -78,6 +78,8 @@ public class PlayerControllerJungle : MonoBehaviour
 
             _direction = new Vector3(_horizMove, 0, _vertMove);
             _anim.SetFloat("Speed", Mathf.Abs(_vertMove));
+
+            // if dir on 
             _velocity = _direction * _speed;
 
 
