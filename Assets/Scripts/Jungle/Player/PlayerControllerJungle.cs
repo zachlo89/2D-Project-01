@@ -5,11 +5,13 @@ using UnityEngine;
 public class PlayerControllerJungle : MonoBehaviour
 {
     // no rigidbody
+    private Animator _anim;
     private CharacterController _charController;
     private Camera _cam;
 
     private Vector3 _direction;
     private Vector3 _velocity;
+    private bool _jumping = false;
 
     private float _minClampVal = 0.0f;
     private float _maxClampVal = 35.0f;
@@ -21,6 +23,7 @@ public class PlayerControllerJungle : MonoBehaviour
 
     [Header("Cam Settings")]
     [SerializeField] private float _camSensitivity;
+
 
     // see what mouseX and Y returning
     //public float mouseX;
@@ -40,6 +43,12 @@ public class PlayerControllerJungle : MonoBehaviour
         {
             Debug.LogError("Main Cam is NULL");
         }
+
+        _anim = GetComponentInChildren<Animator>();
+        if (_anim == null)
+        {
+            Debug.LogError("Animator is NULL");
+        }
     }
 
 
@@ -58,15 +67,25 @@ public class PlayerControllerJungle : MonoBehaviour
     {
         if (_charController.isGrounded == true)
         {
+            if (_jumping == true)
+            {
+                _jumping = false;
+                _anim.SetBool("Jump", _jumping);
+            }
+
             float _horizMove = Input.GetAxisRaw("Horizontal");
             float _vertMove = Input.GetAxisRaw("Vertical");
 
             _direction = new Vector3(_horizMove, 0, _vertMove);
+            _anim.SetFloat("Speed", Mathf.Abs(_vertMove));
             _velocity = _direction * _speed;
+
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 _velocity.y = _jumpHeight;
+                _jumping = true;
+                _anim.SetBool("Jump", _jumping);
             }
         }
 
