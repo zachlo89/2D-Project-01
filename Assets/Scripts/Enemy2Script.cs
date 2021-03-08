@@ -8,11 +8,11 @@ public class Enemy2Script : MonoBehaviour
     private PlayerHealth playerHealth;
     [SerializeField] private float speed = 3f;
     [SerializeField] private float aggroDistance = 500;
-    private EnemyPatrol patrol;
+    private Patrol patrol;
 
     private void Start()
     {
-        patrol = GetComponent<EnemyPatrol>();
+        patrol = GetComponent<Patrol>();
         if(objectToFollow == null)
         {
             objectToFollow = GameObject.FindGameObjectWithTag("Player");
