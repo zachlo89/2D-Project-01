@@ -32,7 +32,7 @@ public class FollowThePlayer : MonoBehaviour
 
     private void Camera1Settings()
     {
-        transform.localRotation = Quaternion.Euler(30, -25, 0);
+        transform.localRotation = Quaternion.Euler(20, -15, 0);
         transform.position = objectToFollow.transform.position + offset;
     }
 
