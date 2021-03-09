@@ -61,6 +61,26 @@ public class MeshGenerator : MonoBehaviour
                 i++;
             }
         }
+
+
+        _triangles = new int[xSize * zSize * 6]; // 3 points // 6 points
+        int _vert = 0; // trks vertex curr looking at
+        int _tri = 0; // trks triangles
+
+        for (int x = 0; x < xSize; x++)
+        {
+            
+            _triangles[_tri + 0] = _vert + 0;
+            _triangles[_tri + 1] = _vert + xSize + 1;
+            _triangles[_tri + 2] = _vert + 1;
+            // add three more vertices
+            _triangles[_tri + 3] = _vert + 1;
+            _triangles[_tri + 4] = _vert + xSize + 1;
+            _triangles[_tri + 5] = _vert + xSize + 2;
+
+            _vert++;
+            _tri += 6;
+        }
     }
 
     void UpdateMesh()
