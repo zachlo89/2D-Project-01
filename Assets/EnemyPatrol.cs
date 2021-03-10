@@ -2,31 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Patrol : MonoBehaviour
+public class EnemyPatrol : MonoBehaviour
 {
     [SerializeField] private Vector3 patrolPoint;
     [SerializeField] private float speed;
     private Vector3 startingPosition;
     private bool shouldPatrol;
     private bool toPatrolPoint;
-    private ParentPlayer parentPlayer;
 
     void Start()
     {
-        transform.LookAt(patrolPoint);
         toPatrolPoint = true;
         shouldPatrol = true;
         startingPosition = transform.position;
-        parentPlayer = GetComponent<ParentPlayer>();
     }
 
     public void AggroOn(bool agro)
     {
-        if(agro != shouldPatrol)
+        if (agro != shouldPatrol)
         {
             shouldPatrol = agro;
         }
-        
+
     }
 
     // Update is called once per frame
@@ -36,16 +33,18 @@ public class Patrol : MonoBehaviour
         {
             if (toPatrolPoint)
             {
+                transform.LookAt(patrolPoint);
                 transform.Translate(Vector3.forward * speed * Time.deltaTime);
-
 
                 if (Vector3.Distance(transform.position, patrolPoint) < 5)
                 {
                     toPatrolPoint = false;
                 }
-            } else
+            }
+            else
             {
-                transform.Translate(Vector3.back * speed * Time.deltaTime);
+                transform.LookAt(startingPosition);
+                transform.Translate(Vector3.forward * speed * Time.deltaTime);
 
                 if (Vector3.Distance(transform.position, startingPosition) < 5)
                 {

@@ -413,10 +413,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8551594619984141013}
   - component: {fileID: 8642496898504980303}
-  - component: {fileID: -1434567391541213290}
   - component: {fileID: 1604325572270419999}
   - component: {fileID: 4770773383601334755}
-  - component: {fileID: 3911492360116574168}
+  - component: {fileID: 8452185130470986676}
+  - component: {fileID: -2688086164747450328}
   m_Layer: 0
   m_Name: micro_mummy
   m_TagString: Untagged
@@ -459,21 +459,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &-1434567391541213290
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8549994102100580493}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7524d3d040d4ce4da8ab6c89fab4175, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectToFollow: {fileID: 0}
-  speed: 3
-  aggroDistance: 100
 --- !u!136 &1604325572270419999
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -504,7 +489,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &3911492360116574168
+--- !u!114 &8452185130470986676
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -513,9 +498,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 8549994102100580493}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ee650dacc2fca44ca039c47222a8073, type: 3}
+  m_Script: {fileID: 11500000, guid: 629a438ffb4157d4dad11eb0d8426984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectToFollow: {fileID: 0}
+  speed: 30
+  aggroDistance: 60
+--- !u!114 &-2688086164747450328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8549994102100580493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31019981a22cd844c9f35e934f85c41a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  patrolPoint: {x: 0, y: 0, z: 0}
+  speed: 40
 --- !u!1 &8550041602057798967
 GameObject:
   m_ObjectHideFlags: 0
