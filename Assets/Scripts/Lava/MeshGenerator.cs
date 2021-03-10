@@ -24,6 +24,10 @@ public class MeshGenerator : MonoBehaviour
         GetComponent<MeshFilter>().mesh = _mesh;
 
         CreateShape();
+    }
+
+    private void Update()
+    {
         UpdateMesh();
     }
 
@@ -57,7 +61,8 @@ public class MeshGenerator : MonoBehaviour
         {
             for (int x = 0; x <= xSize; x++) // loop over verticies squares on x
             {
-                _verticies[i] = new Vector3(x, 0, z); // creates grid w/ all verticies
+                float _y = Mathf.PerlinNoise(x * 0.3f, z * 0.3f) * 2f;
+                _verticies[i] = new Vector3(x, _y, z); // creates grid w/ all verticies
                 i++;
             }
         }
@@ -67,19 +72,24 @@ public class MeshGenerator : MonoBehaviour
         int _vert = 0; // trks vertex curr looking at
         int _tri = 0; // trks triangles
 
-        for (int x = 0; x < xSize; x++)
+        for (int z = 0; z < zSize; z++)
         {
-            
-            _triangles[_tri + 0] = _vert + 0;
-            _triangles[_tri + 1] = _vert + xSize + 1;
-            _triangles[_tri + 2] = _vert + 1;
-            // add three more vertices
-            _triangles[_tri + 3] = _vert + 1;
-            _triangles[_tri + 4] = _vert + xSize + 1;
-            _triangles[_tri + 5] = _vert + xSize + 2;
+            for (int x = 0; x < xSize; x++)
+            {
+                _triangles[_tri + 0] = _vert + 0;
+                _triangles[_tri + 1] = _vert + xSize + 1;
+                _triangles[_tri + 2] = _vert + 1;
+                // add three more vertices
+                _triangles[_tri + 3] = _vert + 1;
+                _triangles[_tri + 4] = _vert + xSize + 1;
+                _triangles[_tri + 5] = _vert + xSize + 2;
 
+                _vert++;
+                _tri += 6;
+            }
+
+            // increment vert by 1 ea time looping over a row
             _vert++;
-            _tri += 6;
         }
     }
 
@@ -96,14 +106,14 @@ public class MeshGenerator : MonoBehaviour
         _mesh.RecalculateNormals();
     }
 
-    private void OnDrawGizmos()
-    {
-        if (_verticies == null)
-            return;
+    //private void OnDrawGizmos()
+    //{
+    //    if (_verticies == null)
+    //        return;
 
-        for (int i = 0; i < _verticies.Length; i++)
-        {
-            Gizmos.DrawSphere(_verticies[i], 0.1f);
-        }
-    }
+    //    for (int i = 0; i < _verticies.Length; i++)
+    //    {
+    //        Gizmos.DrawSphere(_verticies[i], 0.1f);
+    //    }
+    //}
 }
