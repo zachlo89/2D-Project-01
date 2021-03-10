@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -51,6 +52,11 @@ public class PlayerHealth : MonoBehaviour
             animator.SetBool("isDead", true);
             Debug.Log("You died");
         }
+
+        if (other.CompareTag("Killable"))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -71,6 +77,11 @@ public class PlayerHealth : MonoBehaviour
             playerController.enabled = false;
             animator.SetBool("isDead", true);
             Debug.Log("You died");
+        }
+
+        if (collision.collider.CompareTag("Killable"))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 
